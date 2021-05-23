@@ -1,5 +1,4 @@
-# Funcion para recorrer lista de ingredientes y devolver 
-# cada ingrediente separados por coma
+# Funcion para recorrer lista de ingredientes y devolver cada ingrediente separados por coma
 def listarIngredientes(ingredientesAgregados):
     ingredientes=''
     for ingrediente in ingredientesAgregados:
