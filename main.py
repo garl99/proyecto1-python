@@ -12,26 +12,30 @@ def inputIngrediente():
 
     while(flag):
         ingredienteClave = str(input("Indique ingrediente (enter para terminar): "))
-        if ingredienteClave not in ingredientes.keys() and ingredienteClave!='':
+        if ingredienteClave not in ingredientes.keys() and ingredienteClave != '':
             print("=> Debe seleccionar un ingrediente correcto!!")
         else:
             break
-
     return ingredienteClave
 
 #Funcion que pide el tamano y valida que sea correcto
 def inputTamano():
-    flag=True
+    flag = True
     while(flag):
         tamano = str(input("Tamanos: Triple ( t ) Doble ( d ) Individual ( i ): "))
-        if tamano not in opcionesValidas or tamano=='':
+        if tamano not in opcionesValidas or tamano == '':
             print("=> Debe seleccionar un ingrediente correcto!!")
         else:
+            print("Tamaño seleccionado: ", tamanos[tamano][0])
             break
-
     return tamano 
 
-print("SANDWICHES UCAB")
+def printStars():
+    return print("*" * 28)
+
+printStars()
+print("*      SANDWICHES UCAB     *")
+printStars()
 
 tamanos = {
     't': ['Triple', 580],
@@ -51,11 +55,11 @@ ingredientes = {
 
 condicion = 's'
 contadorSand = 1
-total=0
+total = 0
 
 while condicion == 's' or condicion == 'S':
 
-    print("Sandwich número ", contadorSand)
+    print("Sandwich número ", contadorSand, "\n")
 
     print("Opciones:")
 
@@ -63,46 +67,49 @@ while condicion == 's' or condicion == 'S':
 
     tamanoSand = inputTamano()
 
-    print("Ingredientes:")
+    print("\nIngredientes:")
     for key in ingredientes:
         print(ingredientes[key][0], '\t(', key, ')')
 
-    subtotal=int(tamanos.get(tamanoSand)[1])
-    cantidadIngrediente=0
-    ingredientesAgregados=[]
+    subtotal = int(tamanos.get(tamanoSand)[1])
+    cantidadIngrediente = 0
+    ingredientesAgregados = []
     ingredienteClave = inputIngrediente()
 
-    while ingredienteClave in ingredientes.keys() or ingredienteClave=='':
+    while ingredienteClave in ingredientes.keys() or ingredienteClave == '':
         
-        if cantidadIngrediente!=0:
+        if cantidadIngrediente != 0:
             ingredienteClave = inputIngrediente()
 
-        if ingredienteClave=='' and cantidadIngrediente==0:
+        if ingredienteClave == '' and cantidadIngrediente == 0:
             ingredientesAgregados.append('Queso')
             costoIngrediente = 0
             subtotal += costoIngrediente
             break
-        elif ingredienteClave==''and cantidadIngrediente>0:
+        elif ingredienteClave == '' and cantidadIngrediente > 0:
             break
 
         datos = ingredientes.get(ingredienteClave)
         ingredientesAgregados.append(datos[0])
-        subtotal+=datos[1]
+        subtotal += datos[1]
         
-        cantidadIngrediente+=1
+        cantidadIngrediente += 1
     
     tamano = str(tamanos.get(tamanoSand)[0])
 
     print("Usted seleccionó un sandwich", tamano , "con", listarIngredientes(ingredientesAgregados))
-    print("Subtotal a pagar por un sandwich", tamano, ": ", subtotal)
+    print("\nSubtotal a pagar por un sandwich", tamano, ": ", subtotal)
 
-    total=total+subtotal
+    total = total+subtotal
     
+    printStars()
     condicion = str(input("Desea continuar [s/n]? "))
+    printStars()
     
     if condicion == 's' or condicion == 'S':
         contadorSand += 1
     else:
-        print('El pedido tiene un total de',contadorSand,'sándwich(es) por un monto de ',total)
+        print('El pedido tiene un total de',contadorSand,'sándwich(es) por un monto de ',total,"\n")
         print('Gracias por su compra, regrese pronto')
+        
 print("Fin del pedido")
