@@ -1,12 +1,12 @@
-#Funcion para recorrer lista de ingredientes y devolver 
-#cada ingrediente separados por coma
+# Funcion para recorrer lista de ingredientes y devolver 
+# cada ingrediente separados por coma
 def listarIngredientes(ingredientesAgregados):
     ingredientes=''
     for ingrediente in ingredientesAgregados:
         ingredientes+=ingrediente.strip() +','
     return ingredientes[:-1]
 
-#Funcion que pide el ingrediente y valida que sea correcto
+# Funcion que pide el ingrediente y valida que sea correcto
 def inputIngrediente():
     flag=True
 
@@ -18,7 +18,7 @@ def inputIngrediente():
             break
     return ingredienteClave
 
-#Funcion que pide el tamano y valida que sea correcto
+# Funcion que pide el tamano y valida que sea correcto
 def inputTamano():
     flag = True
     while(flag):
@@ -42,6 +42,7 @@ def agregarCuponDescuento(precioTotal):
         print("El cupón que ha ingresado no es válido.\n")
     return montoFinalDescuento        
 
+# Función que pregunta al usuario si desea aplicar un cupón de descuento
 def aplicarCupon(contadorSand, total):
     inputCupon = 's'
         
