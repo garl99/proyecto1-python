@@ -29,4 +29,14 @@ cupones = {
     'FARD50': 50
 }
 
+#METODO DE PAGO
+metodos = {
+    'CASH': 1,
+    'PAYPAL': 2,
+    'UPHOLD': 3,
+    'DEBIDO': 4,
+    'CREDITO': 5
+}
+
+
 opcionesValidas = 'tdi'

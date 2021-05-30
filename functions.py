@@ -1,4 +1,5 @@
 from data import *
+import time 
 
 # Funcion para recorrer lista de ingredientes y devolver 
 # cada ingrediente separados por coma
@@ -58,9 +59,92 @@ def aplicarCupon(contadorSand, total):
                 print('El pedido tiene un total de',contadorSand,'sándwich(es) por un monto (con descuento) de ',totalDescuento,"\n")
                 break            
         else:
-            print('Gracias por su compra, regrese pronto')
+            #print('Gracias por su compra, regrese pronto')
             break
     return 0
+
+#Metodos de pago
+def MetodoPago():
+
+    print('************************************************')
+    print("*    Por Favor seleccione un metodo de Pago    *")
+    print('************************************************')
+
+    for key in metodos:
+       print(metodos[key],'-',key,'\t')
+
+    print("\n*ingrese su metodo de  pago*")
+    pago = int(input())
+    
+    if pago == 1:
+        cash()
+    
+    if pago == 2:
+        paypal()
+
+    if pago == 3:
+        uphold()
+
+    if pago == 4:    
+        debito()
+
+    elif pago==5:
+        credito()
+
+    elif pago not in [1,2,3,4,5] :
+        print("=> Debe seleccionar un metodo correcto!!")
+        
+    return 0
+
+
+
+def cash():
+    print("\n*Entregar el efectivo al delivery en el momento del despacho*")
+    print('Gracias por su compra, regrese pronto')
+    return 1
+
+def paypal():
+    print("\n*por favor ingreser su direccion de correo electronico*")
+    print("*a la cual le haremos el cargo del pedido*")
+    email = str(input())
+    time.sleep(3)
+    print("\nel cargo fue efectuado a la siguiente direccion ",email)
+    print('Gracias por su compra, regrese pronto')
+    return 1
+
+def uphold():
+    print("\n*por favor ingreser su direccion de correo electronico*")
+    print("\n*a la cual le haremos el cargo del pedido*")
+    email = str(input())
+    time.sleep(3)
+    #boton de cargando
+    print("\nel cargo fue efectuado a la siguiente direccion ",email)
+    print('Gracias por su compra, regrese pronto')
+    return 1
+
+def debito():
+    print("\npor favor ingreser los numeros de su tarjeta de debito")
+    TDB = str(input())
+    print("\npor favor introduzca el codigo de seguridad del reverso de su tarjeta")
+    print("\npor favor introduzca el nombre del tarjetahabitante")
+    time.sleep(3)
+    #boton de cargando
+    print("\nel cargo fue efectuado a su cuenta")
+    print('Gracias por su compra, regrese pronto')
+    return 1
+
+
+def credito():
+    print("\npor favor ingreser los numeros de su tarjeta de credito")
+    TDC = str(input())
+    print("\npor favor introduzca el codigo de seguridad del reverso de su tarjeta")
+    print("\npor favor introduzca el nombre del tarjetahabitante")
+    time.sleep(3)
+    #boton de cargando
+    print("\nel cargo fue efectuado a su tarjeta de credito")
+    print('Gracias por su compra, regrese pronto')
+    return 1
+
 
 # Función que imprime 28 asteriscos por pantalla
 def printStars():

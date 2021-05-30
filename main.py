@@ -2,6 +2,7 @@ from data import *
 from functions import *
 
 
+
 printStars()
 print("*      SANDWICHES UCAB     *")
 printStars()
@@ -62,5 +63,6 @@ while condicion == 's' or condicion == 'S':
     else:
         print('El pedido tiene un total de',contadorSand,'sándwich(es) por un monto de ',total,"\n")   
         aplicarCupon(contadorSand,total) # Funcionalidad cupones de descuento
+        MetodoPago()
         
 print("Fin del pedido")
