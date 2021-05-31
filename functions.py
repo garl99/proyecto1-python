@@ -1,5 +1,8 @@
 from data import *
 import time 
+from tqdm.auto import tqdm
+import os
+
 
 # Funcion para recorrer lista de ingredientes y devolver 
 # cada ingrediente separados por coma
@@ -97,7 +100,6 @@ def MetodoPago():
     return 0
 
 
-
 def cash():
     print("\n*Entregar el efectivo al delivery en el momento del despacho*")
     print('Gracias por su compra, regrese pronto')
@@ -107,7 +109,8 @@ def paypal():
     print("\n*por favor ingreser su direccion de correo electronico*")
     print("*a la cual le haremos el cargo del pedido*")
     email = str(input())
-    time.sleep(3)
+    for i in tqdm(range(100000)):
+        print(" ",end='\r')
     print("\nel cargo fue efectuado a la siguiente direccion ",email)
     print('Gracias por su compra, regrese pronto')
     return 1
@@ -116,8 +119,8 @@ def uphold():
     print("\n*por favor ingreser su direccion de correo electronico*")
     print("\n*a la cual le haremos el cargo del pedido*")
     email = str(input())
-    time.sleep(3)
-    #boton de cargando
+    for i in tqdm(range(100000)):
+     print(" ",end='\r')
     print("\nel cargo fue efectuado a la siguiente direccion ",email)
     print('Gracias por su compra, regrese pronto')
     return 1
@@ -126,9 +129,11 @@ def debito():
     print("\npor favor ingreser los numeros de su tarjeta de debito")
     TDB = str(input())
     print("\npor favor introduzca el codigo de seguridad del reverso de su tarjeta")
+    ta = str(input())
     print("\npor favor introduzca el nombre del tarjetahabitante")
-    time.sleep(3)
-    #boton de cargando
+    ta2 = str(input())
+    for i in tqdm(range(100000)):
+     print(" ",end='\r')
     print("\nel cargo fue efectuado a su cuenta")
     print('Gracias por su compra, regrese pronto')
     return 1
@@ -138,14 +143,62 @@ def credito():
     print("\npor favor ingreser los numeros de su tarjeta de credito")
     TDC = str(input())
     print("\npor favor introduzca el codigo de seguridad del reverso de su tarjeta")
+    ta = str(input())
     print("\npor favor introduzca el nombre del tarjetahabitante")
-    time.sleep(3)
-    #boton de cargando
+    ta2 = str(input())
+    for i in tqdm(range(100000)):
+     print(" ",end='\r')
     print("\nel cargo fue efectuado a su tarjeta de credito")
     print('Gracias por su compra, regrese pronto')
     return 1
 
 
+def delivery(contadorSand, total):
+
+    print('************************************************')
+    print("*************METODO DE ENTREGA******************")
+    print('************************************************')
+    print('\n 1- Pick-UP')
+    print('\n 2- Delivery')
+
+    print("\n*ingrese su metodo de entrega*")
+    pago = int(input())
+    
+    if pago == 1:
+        print('El pedido tiene un total de',contadorSand,'sándwich(es) por un monto de ',total,"\n")
+        time.sleep(2)
+        clearConsole()
+        aplicarCupon(contadorSand,total) 
+    
+    if pago == 2:
+
+        print("\npor favor ingreser su direccion exacta")
+        direc = str(input())
+        print("\npor favor introduzca el nombre de la persona que recibe")
+        nombre = str(input())
+        print("\npor favor introduzca un numero de telefono")
+        cel = str(input())
+        print("\nCosto del envio 800")
+
+        total += 800
+        print('El pedido tiene un total de',contadorSand,'sándwich(es) por un monto con delivery de',total,"\n")
+        print('Enviado a ',nombre,'en',direc,"\n")
+        time.sleep(4)
+        #clearConsole()
+        aplicarCupon(contadorSand,total) 
+
+    elif pago not in [1,2] :
+        print("=> Debe seleccionar un metodo correcto!!")
+        time.sleep(1)
+        delivery(contadorSand, total)
+
+
+
+
 # Función que imprime 28 asteriscos por pantalla
 def printStars():
     return print("*" * 28)
+
+
+clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
+
