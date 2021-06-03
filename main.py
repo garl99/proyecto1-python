@@ -62,7 +62,7 @@ while condicion == 's' or condicion == 'S':
         contadorSand += 1
     else:
         print('El pedido tiene un total de',contadorSand,'sándwich(es) por un monto de ',total,"\n")   
-        delivery(contadorSand,total) #delivery 
-        MetodoPago() #Metodo de pago
+        delivery(contadorSand,total) # Delivery 
+        MetodoPago() # Metodo de pago
         
 print("Fin del pedido")
