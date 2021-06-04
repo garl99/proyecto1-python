@@ -1,6 +1,6 @@
-# Tienda de Sandwichs - Python
+# Tienda de Sandwiches - Python
 
-Una tienda de sandwichs, sin interfaz gráfica, creada para la entrega del primer 
+Una tienda de sandwiches, sin interfaz gráfica, creada para la entrega del primer 
 proyecto de Python, una materia electiva de 9no semestre en la Universidad Católica 
 Andrés Bello.
 
