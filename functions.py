@@ -1,3 +1,5 @@
+# Modulo que contiene las funciones/metodos de la app
+
 from data import *
 import time 
 from tqdm.auto import tqdm
@@ -57,16 +59,15 @@ def aplicarCupon(contadorSand, total):
     inputCupon = 's'
         
     while inputCupon == 's':
-        inputCupon = str(input("¿Desea aplicar un cupón de descuento? [s/n] "))
+        inputCupon = str(input("¿Desea aplicar un cupón de descuento? [s/n]\n"))
         if inputCupon == 's' or inputCupon == 'S':
             totalDescuento = total - agregarCuponDescuento(total)            
             if(totalDescuento == total):
                 continue
             else:
-                print('El pedido tiene un total de: ',contadorSand,'sándwich(es) por un monto (con descuento) de: ',totalDescuento,"\n")
+                print('\nEl pedido tiene un total de: ',contadorSand,'sándwich(es) por un monto (con descuento) de: ',totalDescuento,"\n")
                 break            
         else:
-            #print('Gracias por su compra, regrese pronto')
             break
     return 0
 
@@ -80,7 +81,7 @@ def MetodoPago():
     for key in metodos:
        print(metodos[key],'-',key,'\t')
 
-    print("\n *Ingrese su metodo de  pago* ")
+    print("\n*Ingrese su metodo de  pago* ")
     pago = int(input())
     
     if pago == 1:
@@ -118,119 +119,72 @@ def paymentProcess(process = False, address = ""):
     print("Gracias por su compra, regrese pronto")
     return 0
 
+# Metodo de pago en efectivo
 def cash():
-    print("\n *Entregar el efectivo al delivery en el momento del despacho*")
-    
-    # print('Gracias por su compra, regrese pronto')
-    
+    print("\n*Entregar el efectivo al delivery en el momento del despacho*")   
     paymentProcess()
     return 0
 
+# Metodo de pago con paypal
 def paypal():
-    # print("\n*por favor ingreser su direccion de correo electronico*")
-    # print("*a la cual le haremos el cargo del pedido*")
-    # email = str(input())
-
     email = input("Por favor, ingrese su direccion de correo electrónico al cual le haremos el cargo del pedido: \n --> ")
-    
-    # for i in tqdm(range(100000)):
-    #     print(" ",end='\r')
-    # print("\nel cargo fue efectuado a la siguiente direccion ",email)
-    # print('Gracias por su compra, regrese pronto')
-    
     paymentProcess(True, email) 
     return 0
 
+# Metodo de pago con uphold
 def uphold():
-    # print("\n*por favor ingreser su direccion de correo electronico*")
-    # print("\n*a la cual le haremos el cargo del pedido*")
-    # email = str(input())
-    
     email = input("Por favor, ingrese su direccion de correo electrónico al cual le haremos el cargo del pedido: \n --> ")
-    
-    # for i in tqdm(range(100000)):
-    #  print(" ",end='\r')
-    # print("\nel cargo fue efectuado a la siguiente direccion ",email)
-    # print('Gracias por su compra, regrese pronto')
-    
     paymentProcess(True, email) 
     return 0
 
-def debito():
-    # print("\n Por favor, ingreser los numeros de su tarjeta de debito")
-    # TDB = str(input())
-    # print("\n Por favor, introduzca el codigo de seguridad del reverso de su tarjeta")
-    # ta = str(input())
-    # print("\n Por favor, introduzca el nombre del tarjetahabitante")
-    # ta2 = str(input())
-    
+# Metodo de pago con tarjeta debito
+def debito():   
     input("Por favor, ingrese los números de su tarjeta de débito  -->  ")
     input("Por favor, introduzca el código de seguridad del reverso de su tarjeta  -->  ")
     input("Por favor, introduzca el nombre del tarjetahabitante  -->  ")
-    
-    # for i in tqdm(range(100000)):
-    #  print(" ",end='\r')
-    # print("\nel cargo fue efectuado a su cuenta")
-    # print('Gracias por su compra, regrese pronto')
-    
     paymentProcess(True)
     return 0
 
-
-def credito():
-    # print("\n Por favor, ingrese los numeros de su tarjeta de credito")
-    # TDC = str(input())
-    # print("\n Por favor, introduzca el codigo de seguridad del reverso de su tarjeta")
-    # ta = str(input())
-    # print("\n Por favor, introduzca el nombre del tarjetahabitante")
-    # ta2 = str(input())
-    
+# Metodo de pago con tarjeta credito
+def credito():   
     input("Por favor, ingrese los números de su tarjeta de crédito  -->  ")
     input("Por favor, introduzca el código de seguridad del reverso de su tarjeta  -->  ")
     input("Por favor, introduzca el nombre del tarjetahabitante  -->  ")
-    
-    # for i in tqdm(range(100000)):
-    #  print(" ",end='\r')
-    # print("\n El cargo fue efectuado a su tarjeta de credito")
-    # print('Gracias por su compra, regrese pronto')
-    
     paymentProcess(True)
     return 0
 
-
+# Metodo para el delivery
 def delivery(contadorSand, total):
-
+    clearConsole()
     printStars()
     print("*    Método de Entrega    *")
     printStars()
     
-    print('\n 1- Pick-Up')
-    print('\n 2- Delivery')
+    print('\n1- Pick-Up')
+    print('\n2- Delivery')
 
-    print("\n *Ingrese su metodo de entrega* ")
+    print("\n*Ingrese su metodo de entrega* ")
     pago = int(input())
     
     if pago == 1:
-        print('El pedido tiene un total de: ',contadorSand,'sándwich(es) por un monto de: ',total,"\n")
+        print('\nEl pedido tiene un total de: ',contadorSand,'sándwich(es) por un monto de: ',total,"\n")
         time.sleep(2)
-        clearConsole()
         aplicarCupon(contadorSand,total) 
     
     if pago == 2:
 
-        print("\n Por favor, ingrese su direccion exacta")
+        print("\nPor favor, ingrese su direccion exacta")
         direc = str(input())
-        print("\n Por favor, introduzca el nombre de la persona que recibe")
+        print("\nPor favor, introduzca el nombre de la persona que recibe")
         nombre = str(input())
-        print("\n Por favor, introduzca un numero de telefono")
+        print("\nPor favor, introduzca un numero de telefono")
         cel = str(input())
-        print("\n Costo del envio 800")
+        print("\nCosto del envio 800")
 
         total += 800
-        print('El pedido tiene un total de: ',contadorSand,'sándwich(es) por un monto con delivery de: ',total,"\n")
+        print('\nEl pedido tiene un total de: ',contadorSand,'sándwich(es) por un monto con delivery de: ',total,"\n")
         print('Enviado a ',nombre,'en ',direc,"\n")
-        time.sleep(4)
-        #clearConsole()
+        time.sleep(2)
         aplicarCupon(contadorSand,total) 
 
     elif pago not in [1,2] :
@@ -238,5 +192,6 @@ def delivery(contadorSand, total):
         time.sleep(1)
         delivery(contadorSand, total)
 
+# Funcion para limpiar la consola
 clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 

@@ -1,3 +1,4 @@
+# Modulos
 from data import *
 from functions import *
 
@@ -49,7 +50,7 @@ while condicion == 's' or condicion == 'S':
     
     tamano = str(tamanos.get(tamanoSand)[0])
 
-    print("Usted seleccionó un sandwich", tamano , "con", listarIngredientes(ingredientesAgregados))
+    print("\nUsted seleccionó un sandwich", tamano , "con", listarIngredientes(ingredientesAgregados))
     print("\nSubtotal a pagar por un sandwich", tamano, ": ", subtotal)
 
     total = total + subtotal
@@ -61,7 +62,6 @@ while condicion == 's' or condicion == 'S':
     if condicion == 's' or condicion == 'S':
         contadorSand += 1
     else:
-        print('El pedido tiene un total de',contadorSand,'sándwich(es) por un monto de ',total,"\n")   
         delivery(contadorSand,total) # Delivery 
         MetodoPago() # Metodo de pago
         

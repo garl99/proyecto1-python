@@ -1,6 +1,4 @@
-# 
 # Modulo encargado de almacenar los datos de la app
-
 
 # Tamaños de los sandwich con su precio base
 tamanos = {
@@ -29,7 +27,7 @@ cupones = {
     'FARD50': 50
 }
 
-#METODO DE PAGO
+# Metodos de pago
 metodos = {
     'CASH': 1,
     'PAYPAL': 2,
@@ -38,5 +36,5 @@ metodos = {
     'CREDITO': 5
 }
 
-
+# Opciones validas para tamano del sandwich
 opcionesValidas = 'tdi'
